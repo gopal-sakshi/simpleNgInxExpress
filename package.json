@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "readMe": "need to start nginx server... localhost:3055 (or) localhost:83",
+    "start": "nodemon index.js 3055",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
