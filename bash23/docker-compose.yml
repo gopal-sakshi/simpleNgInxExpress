@@ -1,0 +1,30 @@
+services:
+  node23_lb_01:
+    image: node23_lb
+    container_name: node23_lb_01
+    ports:
+      - "18881:3055"
+    command: ["npm", "start"]
+    volumes:
+      - ../index.js:/app/index.js
+      - /var/run/docker.sock:/var/run/docker.sock   ## this is to know container_id inside node application
+
+  node23_lb_02:
+    image: node23_lb
+    container_name: node23_lb_02
+    ports:
+      - "18882:3055"
+    command: ["npm", "start"]
+    volumes:
+      - ../index.js:/app/index.js
+      - /var/run/docker.sock:/var/run/docker.sock   ## this is to know container_id inside node application
+
+  node23_lb_03:
+    image: node23_lb
+    container_name: node23_lb_03
+    ports:
+      - "18883:3055"
+    command: ["npm", "start"]
+    volumes:
+      - ../index.js:/app/index.js
+      - /var/run/docker.sock:/var/run/docker.sock   ## this is to know container_id inside node application

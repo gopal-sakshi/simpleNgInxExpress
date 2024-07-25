@@ -1,4 +1,6 @@
 const express = require('express');
+const { exec } = require('child_process');
+
 var fs = require('fs');
 const app = express();
 const PORT = process.argv[2] || 3000;
@@ -26,4 +28,12 @@ app.get('/pdf2', (req, res) => {
 app.get('/loadTest1', (req, res) => {
     fs.appendFileSync('./resources/loadTest1.txt', 'jingchak\n');
     res.send('data appended');
+});
+
+app.get('/', (req, res) => {
+    console.log("rcvd req ==> ", );
+    exec('curl -s --unix-socket /run/docker.sock http://docker/containers/$HOSTNAME/json', (err, stdout, stderr) => {
+        // res.send({ info11: stdout, info12: typeof(stdout), time23: new Date().toISOString() })
+        res.send({ info11: JSON.parse(stdout)["Name"], time23: new Date().toISOString() })
+    })
 })
