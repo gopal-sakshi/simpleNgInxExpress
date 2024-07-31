@@ -1,4 +1,7 @@
 services:
+
+  ##########  first execute build23.sh #### to build the image
+
   node23_lb_01:
     image: node23_lb
     container_name: node23_lb_01
